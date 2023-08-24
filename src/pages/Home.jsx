@@ -10,7 +10,6 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalStateAtom);
   return (
     <DefaultLayout isFooter={true}>
-      Home
       <ModalPortal>{isModalOpen && <DefaultModal />}</ModalPortal>
     </DefaultLayout>
   );

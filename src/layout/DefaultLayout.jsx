@@ -72,6 +72,18 @@ export default function DefaultLayout({ children, isFooter }) {
         </Header>
       )}
 
+      {location.pathname === "/product-detail" && (
+        <Header>
+          <IoIosArrowBack
+            onClick={() => {
+              resetProductInfo();
+              navigate("/");
+            }}
+            style={{ cursor: "pointer" }}
+          />
+        </Header>
+      )}
+
       <div
         style={{
           height: isFooter ? "calc(100% - 128px)" : "calc(100% - 64px)",
