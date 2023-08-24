@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useSetRecoilState, useResetRecoilState } from "recoil";
 
 import {
   PiMagnifyingGlass,
@@ -15,11 +15,13 @@ import { BsChatDots, BsPerson } from "react-icons/bs";
 
 import Logo from "../assets/logo.svg";
 import { modalStateAtom } from "../recoil/ModalAtom";
+import { productInfoAtom } from "../recoil/ProductInfoAtom";
 
 export default function DefaultLayout({ children, isFooter }) {
   const navigate = useNavigate();
   const location = useLocation();
   const setIsModalOpen = useSetRecoilState(modalStateAtom);
+  const resetProductInfo = useResetRecoilState(productInfoAtom);
 
   const handleClickLogo = () => {
     navigate("/");
@@ -52,6 +54,20 @@ export default function DefaultLayout({ children, isFooter }) {
             style={{ cursor: "pointer" }}
           />
           <h1 style={{ fontWeight: "600" }}>내 상품목록</h1>
+          <p style={{ width: "24px" }}></p>
+        </Header>
+      )}
+
+      {location.pathname === "/product-regist" && (
+        <Header>
+          <IoIosArrowBack
+            onClick={() => {
+              handleClickGoBack();
+              resetProductInfo();
+            }}
+            style={{ cursor: "pointer" }}
+          />
+          <h1 style={{ fontWeight: "600" }}>상품 등록</h1>
           <p style={{ width: "24px" }}></p>
         </Header>
       )}

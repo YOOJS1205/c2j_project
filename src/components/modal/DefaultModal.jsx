@@ -14,11 +14,13 @@ export default function DefaultModal() {
   // 새로 등록하기
   const handleClickNewRegist = () => {
     navigate("/product-regist");
+    setIsModalOpen((prev) => !prev);
   };
 
   // 플랫폼 상품 등록하기
   const handleClickPlatformRegist = () => {
     navigate("/product-list");
+    setIsModalOpen((prev) => !prev);
   };
   return (
     <ModalContainer onClick={handleClickOutsideModal}>

@@ -6,6 +6,7 @@ export const myProductList = [
     productPrice: "13,380",
     productPlatform: "/asset/coupang.png",
     purchaseDate: "2023.08.18",
+    platform: "쿠팡",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const myProductList = [
     productPrice: "27,790",
     productPlatform: "/asset/coupang.png",
     purchaseDate: "2023.07.16",
+    platform: "쿠팡",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ export const myProductList = [
     productPrice: "316,780",
     productPlatform: "/asset/11street.jpeg",
     purchaseDate: "2023.07.02",
+    platform: "11번가",
   },
   {
     id: 4,
@@ -30,5 +33,6 @@ export const myProductList = [
     productPrice: "9,450",
     productPlatform: "/asset/11street.jpeg",
     purchaseDate: "2023.05.19",
+    platform: "11번가",
   },
 ];

@@ -11,6 +11,7 @@ export default function ProductItem({
   productPrice,
   productPlatform,
   purchaseDate,
+  platform,
 }) {
   const [isClicked, setIsClicked] = useState(false);
   const setProductInfo = useSetRecoilState(productInfoAtom);
@@ -26,6 +27,7 @@ export default function ProductItem({
         productPrice,
         productPlatform,
         purchaseDate,
+        platform,
       }));
     } else {
       resetProductInfo();

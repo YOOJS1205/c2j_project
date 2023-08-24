@@ -34,6 +34,7 @@ export default function MyProductList() {
             productPrice={item.productPrice}
             productPlatform={item.productPlatform}
             purchaseDate={item.purchaseDate}
+            platform={item.platform}
           />
         ))}
       </ProductContainer>
