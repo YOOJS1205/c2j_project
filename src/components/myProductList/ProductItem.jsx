@@ -35,6 +35,8 @@ export default function ProductItem({
       resetProductInfo();
     }
   };
+
+  console.log(productPlatform.includes("11"));
   return (
     <Container>
       <CheckBoxContainer onClick={handleClickCheckBox}>
@@ -49,7 +51,7 @@ export default function ProductItem({
             <p>{productPrice}원</p>
           </div>
         </ProductInfo>
-        <LogoContainer>
+        <LogoContainer eleven={productPlatform.includes("11") ? true : false}>
           <img src={productPlatform} alt="플랫폼 로고" />
         </LogoContainer>
       </ProductItemContainer>
@@ -115,6 +117,6 @@ const LogoContainer = styled.section`
   margin-left: auto;
   img {
     width: 44px;
-    height: 18px;
+    height: ${({ eleven }) => (eleven ? "18px" : "11px")};
   }
 `;

@@ -83,8 +83,8 @@ const ProductContainer = styled.section`
 
 const Button = styled.button`
   background-color: ${({ enabled }) =>
-    enabled ? "#0dcc5a" : "rgba(0, 0, 0, 0.3)"};
-  color: ${({ enabled }) => (enabled ? "black" : "white")};
+    enabled ? "black" : "rgba(0, 0, 0, 0.3)"};
+  color: white;
   width: calc(480px * 0.9);
   display: block;
   margin: 0 auto;

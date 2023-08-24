@@ -29,11 +29,11 @@ export default function DefaultModal() {
         <OptionContainer>
           <Option onClick={handleClickNewRegist}>
             <h3>새로 등록하기</h3>
-            <p>자체 상품을 등록합니다.</p>
+            <p>상품을 처음부터 등록합니다.</p>
           </Option>
           <Option onClick={handleClickPlatformRegist}>
-            <h3>플랫폼 상품 등록하기</h3>
-            <p>타 플랫폼에서 구매한 상품을 등록합니다.</p>
+            <h3>쇼핑몰 상품 불러오기</h3>
+            <p>쇼핑몰에서 구매한 상품을 등록합니다.</p>
           </Option>
         </OptionContainer>
       </ModalItem>

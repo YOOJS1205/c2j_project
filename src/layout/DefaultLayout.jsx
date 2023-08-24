@@ -87,6 +87,7 @@ export default function DefaultLayout({ children, isFooter }) {
       <div
         style={{
           height: isFooter ? "calc(100% - 128px)" : "calc(100% - 64px)",
+          overflow: "scroll",
         }}
       >
         {children}

@@ -10,6 +10,12 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalStateAtom);
   return (
     <DefaultLayout isFooter={true}>
+      <img
+        src="/asset/screenshot.jpeg"
+        alt="홈 화면 이미지"
+        width={480}
+        height={850}
+      />
       <ModalPortal>{isModalOpen && <DefaultModal />}</ModalPortal>
     </DefaultLayout>
   );
