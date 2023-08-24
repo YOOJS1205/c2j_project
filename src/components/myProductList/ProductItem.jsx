@@ -62,6 +62,7 @@ const Container = styled.section`
 const CheckBoxContainer = styled.article`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   svg {
     width: 20px;
