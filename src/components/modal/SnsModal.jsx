@@ -6,10 +6,12 @@ import { modalStateAtom } from "../../recoil/ModalAtom";
 
 import Auction from "../../assets/auction.png";
 import Gmarket from "../../assets/gmarket.svg";
+import { gmarketLoginAtom } from "../../recoil/gmarketLoginAtom";
 
 export default function DefaultModal() {
   const navigate = useNavigate();
   const setIsModalOpen = useSetRecoilState(modalStateAtom);
+  const setIsGmarketLogin = useSetRecoilState(gmarketLoginAtom);
 
   const handleClickOutsideModal = () => {
     setIsModalOpen(false);
@@ -17,7 +19,8 @@ export default function DefaultModal() {
 
   // 지마켓 로그인
   const handleClickGmarketLogin = () => {
-    navigate("/product-regist");
+    setIsModalOpen(false);
+    setIsGmarketLogin(true);
   };
 
   // 옥션 로그인

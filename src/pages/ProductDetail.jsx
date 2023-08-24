@@ -3,10 +3,13 @@ import styled from "styled-components";
 import DefaultLayout from "../layout/DefaultLayout";
 import { useRecoilValue } from "recoil";
 import { newProductInfoAtom } from "../recoil/NewProductInfoAtom";
+import { productInfoAtom } from "../recoil/ProductInfoAtom";
+import { GrShare } from "react-icons/gr";
 
 export default function ProductDetail() {
   const newProductInfo = useRecoilValue(newProductInfoAtom);
-  console.log(newProductInfo);
+  const productInfo = useRecoilValue(productInfoAtom);
+  console.log(productInfo.productPlatform);
 
   const editProductDescription = (productDescription) => {
     return productDescription.replaceAll("\n", "<br />");
@@ -20,8 +23,16 @@ export default function ProductDetail() {
         alt="상품 이미지"
       />
       <ProductInfoContainer>
-        <ProductName>{newProductInfo.productName}</ProductName>
-        <ProductPrice>{newProductInfo.productPrice}원</ProductPrice>
+        <div>
+          <div>
+            <ProductName>{newProductInfo.productName}</ProductName>
+            <ProductPrice>{newProductInfo.productPrice}원</ProductPrice>
+          </div>
+          <a href={productInfo.url} target="_blank" rel="noreferrer">
+            <img src={productInfo.productPlatform} alt="플랫폼 로고" />
+            <GrShare />
+          </a>
+        </div>
         <ProductDescription
           dangerouslySetInnerHTML={{
             __html: editProductDescription(newProductInfo.productDescription),
@@ -34,11 +45,32 @@ export default function ProductDetail() {
 
 const ProductInfoContainer = styled.section`
   padding: 0 5%;
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      gap: 6px;
+
+      img {
+        width: 48px;
+        height: 24px;
+      }
+
+      svg {
+        margin-top: 5px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
 `;
 
 const ProductName = styled.p`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 12px;
 `;
 

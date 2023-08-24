@@ -9,12 +9,17 @@ import { AiOutlineRight } from "react-icons/ai";
 
 import DefaultLayout from "../layout/DefaultLayout";
 import ProductItem from "../components/myProductList/ProductItem";
-import { myProductList } from "../const/myProductList";
+import {
+  myProductList,
+  myProductListAfterGmarketLogin,
+} from "../const/myProductList";
 import { modalStateAtom } from "../recoil/ModalAtom";
+import { gmarketLoginAtom } from "../recoil/gmarketLoginAtom";
 
 export default function MyProductList() {
   const navigate = useNavigate();
   const productInfo = useRecoilValue(productInfoAtom);
+  const isGmarketLogin = useRecoilValue(gmarketLoginAtom);
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalStateAtom);
   const handleClickProductReigst = () => {
     navigate("/product-regist");
@@ -26,17 +31,20 @@ export default function MyProductList() {
         <AiOutlineRight />
       </InfoContainer>
       <ProductContainer>
-        {myProductList.map((item) => (
-          <ProductItem
-            key={item.id}
-            imgUrl={item.imgUrl}
-            productName={item.productName}
-            productPrice={item.productPrice}
-            productPlatform={item.productPlatform}
-            purchaseDate={item.purchaseDate}
-            platform={item.platform}
-          />
-        ))}
+        {(isGmarketLogin ? myProductListAfterGmarketLogin : myProductList).map(
+          (item) => (
+            <ProductItem
+              key={item.id}
+              imgUrl={item.imgUrl}
+              productName={item.productName}
+              productPrice={item.productPrice}
+              productPlatform={item.productPlatform}
+              purchaseDate={item.purchaseDate}
+              platform={item.platform}
+              url={item.url}
+            />
+          )
+        )}
       </ProductContainer>
       <Button
         onClick={handleClickProductReigst}
