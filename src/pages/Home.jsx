@@ -9,7 +9,7 @@ import { modalStateAtom } from "../recoil/ModalAtom";
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useRecoilState(modalStateAtom);
   return (
-    <DefaultLayout>
+    <DefaultLayout isFooter={true}>
       Home
       <ModalPortal>{isModalOpen && <DefaultModal />}</ModalPortal>
     </DefaultLayout>

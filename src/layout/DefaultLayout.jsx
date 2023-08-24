@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 
 import {
@@ -8,6 +8,7 @@ import {
   PiBell,
   PiListMagnifyingGlassDuotone,
 } from "react-icons/pi";
+import { IoIosArrowBack } from "react-icons/io";
 import { RiHome5Line } from "react-icons/ri";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { BsChatDots, BsPerson } from "react-icons/bs";
@@ -15,8 +16,9 @@ import { BsChatDots, BsPerson } from "react-icons/bs";
 import Logo from "../assets/logo.svg";
 import { modalStateAtom } from "../recoil/ModalAtom";
 
-export default function DefaultLayout({ children }) {
+export default function DefaultLayout({ children, isFooter }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const setIsModalOpen = useSetRecoilState(modalStateAtom);
 
   const handleClickLogo = () => {
@@ -26,38 +28,66 @@ export default function DefaultLayout({ children }) {
   const handleClickProductRegistButton = () => {
     setIsModalOpen(true);
   };
+
+  const handleClickGoBack = () => {
+    navigate(-1);
+    setIsModalOpen(false);
+  };
   return (
     <Container>
-      <Header>
-        <img src={Logo} alt="중고나라 로고" onClick={handleClickLogo} />
-        <FuncContainer>
-          <PiMagnifyingGlass />
-          <PiBell />
-        </FuncContainer>
-      </Header>
-      {children}
-      <Footer>
-        <div>
-          <RiHome5Line />
-          <p>홈</p>
-        </div>
-        <div>
-          <PiListMagnifyingGlassDuotone />
-          <p>검색</p>
-        </div>
-        <div onClick={handleClickProductRegistButton}>
-          <AiOutlinePlusCircle />
-          <p>등록</p>
-        </div>
-        <div>
-          <BsChatDots />
-          <p>채팅</p>
-        </div>
-        <div>
-          <BsPerson />
-          <p>마이</p>
-        </div>
-      </Footer>
+      {location.pathname === "/" && (
+        <Header>
+          <img src={Logo} alt="중고나라 로고" onClick={handleClickLogo} />
+          <FuncContainer>
+            <PiMagnifyingGlass />
+            <PiBell />
+          </FuncContainer>
+        </Header>
+      )}
+
+      {location.pathname === "/product-list" && (
+        <Header>
+          <IoIosArrowBack
+            onClick={handleClickGoBack}
+            style={{ cursor: "pointer" }}
+          />
+          <h1 style={{ fontWeight: "600" }}>내 상품목록</h1>
+          <p style={{ width: "24px" }}></p>
+        </Header>
+      )}
+
+      <div
+        style={{
+          height: isFooter ? "calc(100% - 128px)" : "calc(100% - 64px)",
+        }}
+      >
+        {children}
+      </div>
+
+      {isFooter && (
+        <Footer>
+          <div>
+            <RiHome5Line />
+            <p>홈</p>
+          </div>
+          <div>
+            <PiListMagnifyingGlassDuotone />
+            <p>검색</p>
+          </div>
+          <div onClick={handleClickProductRegistButton}>
+            <AiOutlinePlusCircle />
+            <p>등록</p>
+          </div>
+          <div>
+            <BsChatDots />
+            <p>채팅</p>
+          </div>
+          <div>
+            <BsPerson />
+            <p>마이</p>
+          </div>
+        </Footer>
+      )}
     </Container>
   );
 }
