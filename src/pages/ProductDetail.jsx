@@ -38,6 +38,24 @@ export default function ProductDetail() {
           }}
         />
       </ProductInfoContainer>
+      <img
+        src="/asset/productDetail.jpeg"
+        alt="상품 상세 컨텐츠 사진"
+        width={480}
+        height={650}
+        style={{ marginTop: "20px" }}
+      />
+      <img
+        src="/asset/productDetailButton.jpeg"
+        alt="상품 상세 하단 이미지"
+        style={{
+          position: "absolute",
+          bottom: "0",
+          left: "50%",
+          transform: "translate(-50%)",
+        }}
+        width={480}
+      />
     </DefaultLayout>
   );
 }
