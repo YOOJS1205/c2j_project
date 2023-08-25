@@ -91,6 +91,7 @@ export const myProductListAfterGmarketLogin = [
     productPlatform: "/asset/gmarket_logo.png",
     purchaseDate: "2023.05.08",
     platform: "지마켓",
+    url: "http://global.gmarket.co.kr/item?goodscode=2030823447",
   },
   {
     id: 6,

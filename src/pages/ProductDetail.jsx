@@ -9,7 +9,6 @@ import { GrShare } from "react-icons/gr";
 export default function ProductDetail() {
   const newProductInfo = useRecoilValue(newProductInfoAtom);
   const productInfo = useRecoilValue(productInfoAtom);
-  console.log(productInfo.productPlatform);
 
   const editProductDescription = (productDescription) => {
     return productDescription.replaceAll("\n", "<br />");

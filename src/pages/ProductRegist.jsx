@@ -14,7 +14,7 @@ export default function ProductRegist() {
   const productInfo = useRecoilValue(productInfoAtom);
   const setNewProductInfo = useSetRecoilState(newProductInfoAtom);
 
-  const { register, handleSubmit, getValues } = useForm({
+  const { register, handleSubmit, getValues, watch } = useForm({
     defaultValues: {
       productName: productInfo.productName ? productInfo.productName : "",
       productImgUrl: productInfo.productName ? productInfo.imgUrl : "",
@@ -29,6 +29,7 @@ export default function ProductRegist() {
     setNewProductInfo((prev) => ({ ...prev, ...getValues() }));
     navigate("/product-detail");
   };
+
   return (
     <DefaultLayout>
       <FormContainer>
@@ -46,7 +47,20 @@ export default function ProductRegist() {
         </ImageContainer>
         <input {...register("productName")} placeholder="상품명" />
         <input placeholder="카테고리" />
-        <input {...register("productPrice")} placeholder="판매가격" />
+        <input
+          {...register("productPrice")}
+          placeholder="판매가격"
+          defaultValue={watch("productPrice")}
+        />
+        <input
+          type="range"
+          {...register("productPrice")}
+          onInput={(e) => console.log(e.target.value)}
+          min={0}
+          step={1000}
+          max={Number(productInfo.productPrice.replace(",", "")) * 1.2}
+          defaultValue={Number(productInfo.productPrice.replace(",", ""))}
+        />
         <input placeholder="거래옵션" />
         {!productInfo.productName && (
           <textarea
