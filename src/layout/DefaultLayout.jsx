@@ -50,7 +50,10 @@ export default function DefaultLayout({ children, isFooter }) {
       {location.pathname === "/product-list" && (
         <Header>
           <IoIosArrowBack
-            onClick={handleClickGoBack}
+            onClick={() => {
+              handleClickGoBack();
+              resetProductInfo();
+            }}
             style={{ cursor: "pointer" }}
           />
           <h1 style={{ fontWeight: "600" }}>내 상품목록</h1>

@@ -18,9 +18,8 @@ export default function ProductItem({
   const setProductInfo = useSetRecoilState(productInfoAtom);
   const resetProductInfo = useResetRecoilState(productInfoAtom);
 
-  const handleClickCheckBox = () => {
-    setIsClicked((prev) => !prev);
-    if (!isClicked) {
+  const handleClickCheckBox = (e) => {
+    if (e.target.checked) {
       setProductInfo((prev) => ({
         ...prev,
         imgUrl,
@@ -36,11 +35,11 @@ export default function ProductItem({
     }
   };
 
-  console.log(productPlatform.includes("11"));
   return (
     <Container>
       <CheckBoxContainer onClick={handleClickCheckBox}>
-        {isClicked ? <AiFillCheckCircle /> : <AiOutlineCheckCircle />}
+        {/* {isClicked ? <AiFillCheckCircle /> : <AiOutlineCheckCircle />} */}
+        <input type="radio" name="product" />
       </CheckBoxContainer>
       <ProductItemContainer>
         <img src={imgUrl} alt="상품 이미지" />
